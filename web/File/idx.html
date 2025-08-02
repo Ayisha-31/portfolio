@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayisha | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #e6f4ea;
+      color: #1a1a1a;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #d3f5dc;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid #a5d6b5;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2f855a;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2f4f4f;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #2f855a;
+    }
+
+    /* Sidebar Left */
+    .sidebar {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      color: #2f855a;
+      margin: 10px 0;
+      font-size: 24px;
+      transition: color 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #1a3e2f;
+    }
+
+    .sidebar .line {
+      width: 1px;
+      height: 200px;
+      background-color: #2f855a;
+      margin-top: 10px;
+    }
+
+    /* Sidebar Right (Email) */
+    .sidebar-right {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .sidebar-right a {
+      color: #2f855a;
+      writing-mode: vertical-rl;
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .sidebar-right a:hover {
+      color: #1a3e2f;
+    }
+
+    .sidebar-right .line {
+      width: 1px;
+      height: 200px;
+      background-color: #2f855a;
+      margin-top: 10px;
+    }
+
+    /* Home Section */
+   .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 0 120px; /* Increased from 80px to 120px */
+  text-align: left;
+}
+
+
+    .hero .intro-text {
+      font-size: 18px;
+      font-weight: 400;
+      color: #2f4f4f;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 65px;
+      font-weight: 700;
+      color: #2f4f4f;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      font-size: 45px;
+      font-weight: 600;
+      color: #4d665a;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      color: #5a665e;
+      margin-bottom: 20px;
+    }
+
+    .resume-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: transparent;
+      color: #2f855a;
+      border: 1px solid #2f855a;
+      border-radius: 4px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .resume-btn:hover {
+      background-color: #2f855a;
+      color: white;
+    }
+
+    /* About Section */
+    #about {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 120px 60px;
+      background-color: #f0fff4;
+      flex-wrap: wrap;
+    }
+
+    .about-img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-img img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #a5d6b5;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-content {
+      flex: 2;
+      padding-left: 50px;
+      max-width: 700px;
+    }
+
+    .about-content h2 {
+      font-size: 42px;
+      color: #2f4f4f;
+    }
+
+    .about-content h3 {
+      font-size: 36px;
+      color: #4d665a;
+      margin: 10px 0;
+    }
+
+    .about-content p {
+      margin: 20px 0;
+      color: #5a665e;
+      line-height: 1.6;
+    }
+
+    .tech-list {
+      margin-top: 15px;
+      color: #2f4f4f;
+    }
+
+    .tech-list ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+    }
+
+    .tech-list li {
+      font-size: 16px;
+      color: #2f4f4f;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background-color: transparent;
+      color: #2f855a;
+      border: 1px solid #2f855a;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #4d665a;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 30px;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+      .hero {
+        padding: 0 30px; /* Keep smaller padding for mobile */
+        align-items: center;
+        text-align: center;
+      }
+
+
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 14px;
+        max-width: 90%;
+      }
+
+      #about {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      .about-content {
+        padding-left: 0;
+        margin-top: 20px;
+      }
+
+      .about-content h2 {
+        font-size: 28px;
+      }
+
+      .about-content h3 {
+        font-size: 22px;
+      }
+
+      .about-content p {
+        font-size: 14px;
+        max-width: 100%;
+      }
+
+      .tech-list ul {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar Left -->
+  <div class="sidebar">
+    <a href="https://github.com/Ayisha-31" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/ayisha-navaz-kotikalapudi" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <div class="line"></div>
+  </div>
+
+  <!-- Sidebar Right (Email) -->
+  <div class="sidebar-right">
+    <a href="mailto:ayishanavazkotikalapudi@gmail.com">ayishanavazkotikalapudi@gmail.com</a>
+    <div class="line"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Ayisha Navaz kotikalapudi</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="hero">
+    <p class="intro-text">Hi, my name is</p>
+    <h1>Ayishanavaz kotikalapudi</h1>
+    <h2>I build beautiful digital things.</h2>
+    <p>I’m an AI & DS engineering student, passionate about tech, UI/UX, and entrepreneurship. Let’s explore and create magic together!</p>
+    <a href="Ayishanavaz.pdf" class="resume-btn" target="_blank">Resume</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-img">
+      <img src="profile.jpg" alt="Profile" />
+    </div>
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>Hello! My name is Ayisha, and I am a passionate software engineer and problem solver, dedicated to creating impactful codes that thrive on the internet. My journey in computer science began in 2021 when I delved into the world of full-stack development. Starting with the basics of HTML, CSS, and JavaScript, I quickly realized the potential of creating dynamic and responsive web applications. As I expanded my knowledge to include frameworks like React and backend technologies such as Node.js and Firebase, I became passionate about building comprehensive web solutions.</p>
+      <p>Since pursuing my engineering degree, my career has spanned diverse industries, allowing me to refine my expertise in both desktop and web development. I am passionate about creating innovative and user-friendly solutions using modern technologies. One of my notable projects includes developing the NIST website and a faculty dashboard, enhancing communication and data management for over 20,000 users. My experience also includes working on impactful projects for organizations like JIRDS, an NGO, where I developed a comprehensive website to increase awareness of their services. With a dedication to continuous learning and improvement, I strive to deliver high-quality solutions that make a positive impact.</p>
+      <div class="tech-list">
+        <p>Here are a few technologies I've been working with recently:</p>
+        <ul>
+          <li>Next.js</li>
+          <li>JavaScript (ES6+)</li>
+          <li>Tailwind CSS</li>
+          <li>Express.js</li>
+          <li>Node.js</li>
+          <li>TypeScript</li>
+          <li>Framer Motion</li>
+          <li>Bootstrap</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+<section id="projects" style="padding: 100px 60px; background-color: #e6f4ea;">
+  <h2 style="color: #2f855a; text-align:center; margin-bottom: 50px;">03. Some Things I've Built</h2>
+
+  <!-- Project 1: Cafe Website -->
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 80px;">
+    <!-- Project Image -->
+    <div style="flex: 1; min-width: 300px; overflow: hidden;">
+      <img src="cafe-project.jpg" alt="Cafe Project" class="project-image" />
+    </div>
+
+    <!-- Project Description -->
+    <div style="flex: 1; min-width: 300px; background-color: #d3f5dc; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+      <p style="color:#2f855a; font-size: 14px; margin-bottom: 5px;">Recent Project</p>
+      <h3 style="color:#2f4f4f; font-size: 24px; margin-bottom: 15px;">The Backyard Cafe</h3>
+      <p style="color:#4d665a; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+        I had made a website for the Backyard Cafe and delivered it using HTML, CSS, and JavaScript. 
+        The project involved creating a responsive and visually appealing design that aligned with the cafe’s brand. 
+        One notable feature was the integration of an online menu and reservation system, which allowed users 
+        to easily browse the menu and book tables online. Additionally, I implemented SEO best practices 
+        to improve the cafe's online visibility, resulting in increased web traffic and customer engagement. 
+        This project highlighted my ability to deliver functional and attractive web solutions tailored to client needs.
+      </p>
+      <a href="https://www.cafe-website-link.com" target="_blank" 
+         style="display:inline-block; padding: 8px 16px; background-color: transparent; 
+         color:#2f855a; border: 1px solid #2f855a; border-radius: 4px; 
+         text-decoration:none; transition:0.3s;">
+        View Project
+      </a>
+    </div>
+  </div>
+
+  <!-- Project 2: Fake News Detection -->
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+    <!-- Project Image -->
+    <div style="flex: 1; min-width: 300px; overflow: hidden;">
+      <img src="fake-news.jpg" alt="Fake News Detection Project" class="project-image" />
+    </div>
+
+    <!-- Project Description -->
+    <div style="flex: 1; min-width: 300px; background-color: #d3f5dc; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+      <p style="color:#2f855a; font-size: 14px; margin-bottom: 5px;">Recent Project</p>
+      <h3 style="color:#2f4f4f; font-size: 24px; margin-bottom: 15px;">Fake News Detection</h3>
+      <p style="color:#4d665a; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+        Built a robust machine learning system leveraging Python, Transformers, Hugging Face, and Scikit-Learn 
+        to detect fake news across multiple domains. The project integrated linguistic feature analysis, 
+        comment analysis, and automated decision rule optimization to enhance cross-domain generalization. 
+        This allowed the system to accurately identify misleading information and provide reliable results, 
+        showcasing my expertise in large language models and intelligent automation.
+      </p>
+      <a href="https://www.fakenews-project-link.com" target="_blank" 
+         style="display:inline-block; padding: 8px 16px; background-color: transparent; 
+         color:#2f855a; border: 1px solid #2f855a; border-radius: 4px; 
+         text-decoration:none; transition:0.3s;">
+        View Project
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0.6;               /* Low opacity by default */
+    transition: opacity 0.4s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .project-image:hover {
+    opacity: 1;                 /* Fully visible when hovered */
+    transform: scale(1.02);     /* Optional zoom effect */
+  }
+</style>
+
+<!-- Get In Touch Section -->
+<section id="get-in-touch" style="padding: 100px 60px; background-color: #e6f4ea; text-align: center;">
+  <h2 style="color:#2f855a; font-size: 28px; margin-bottom: 10px;">04. What's Next?</h2>
+  <h3 style="color:#2f4f4f; font-size: 32px; margin-bottom: 15px;">Get In Touch</h3>
+  <p style="color:#4d665a; max-width: 600px; margin: 0 auto 40px; font-size: 16px; line-height: 1.6;">
+    I'm always open to new opportunities. Whether you have a question or just want 
+    to say hi, feel free to reach out, and I'll try my best to respond promptly.
+  </p>
+
+  <div style="max-width: 600px; margin: 0 auto; background: #d3f5dc; padding: 30px; border-radius: 10px; 
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); text-align: left;">
+    <form>
+      <label for="name" style="display:block; font-weight:600; margin-bottom: 5px; color:#2f4f4f;">Name</label>
+      <input type="text" id="name" placeholder="Enter your name"
+             style="width:100%; padding: 12px; margin-bottom: 15px; border: 1px solid #a5d6b5; border-radius: 6px; font-size: 14px; outline:none;">
+
+      <label for="email" style="display:block; font-weight:600; margin-bottom: 5px; color:#2f4f4f;">Email</label>
+      <input type="email" id="email" placeholder="Enter your email"
+             style="width:100%; padding: 12px; margin-bottom: 15px; border: 1px solid #a5d6b5; border-radius: 6px; font-size: 14px; outline:none;">
+
+      <label for="message" style="display:block; font-weight:600; margin-bottom: 5px; color:#2f4f4f;">Message</label>
+      <textarea id="message" rows="4" placeholder="Enter your message"
+                style="width:100%; padding: 12px; margin-bottom: 20px; border: 1px solid #a5d6b5; border-radius: 6px; font-size: 14px; outline:none;"></textarea>
+
+      <button type="submit"
+              style="width:100%; background-color:#2f855a; color:white; border:none; padding: 12px; 
+                     border-radius: 6px; font-size: 14px; cursor:pointer;">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+
+
+<!-- Blogs Section -->
+<section id="blogs" style="padding: 100px 60px; background-color: #f8f9fa;">
+  <h2 style="text-align:center;">My Blogs</h2>
+  <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 300px; background: white; padding: 20px; border-radius: 10px;">
+      <h3>Understanding Hash Maps in Python</h3>
+      <p>A simple explanation of hash maps with real-world examples.</p>
+      <a href="blog1.html">Read More →</a>
+    </div>
+    <div style="flex: 1; min-width: 300px; background: white; padding: 20px; border-radius: 10px;">
+      <h3>Smart Notification Controller App</h3>
+      <p>How I built an app that filters notifications intelligently.</p>
+      <a href="blog2.html">Read More →</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 style="color: #2f855a; text-align:center;">Get in Touch</h2>
+    <p style="color: #4d665a; text-align:center;">
+      Let’s collaborate or just say hi. Reach out at 
+      <a style="color: #2f855a;" href="mailto:ayishanavazkotikalapudi@gmail.com">ayishanavazkotikalapudi@gmail.com</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2025 Ayisha. Made with 💚</p>
+  </footer>
+</body>
+</html>
